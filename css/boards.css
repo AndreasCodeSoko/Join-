@@ -1,0 +1,903 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F6F7F8;
+    margin: 0;
+    position: relative;
+
+}
+
+.pfeile{
+    height: 15Px;
+}
+
+.moveState{
+    filter: brightness(0);
+    padding:10px;
+}
+
+#inputSub {
+    border: none;
+    /* margin-left: 20px;  e */
+}
+
+#inputSub:focus {
+    outline: none;
+}
+
+#displayBoard {
+    position: relative;
+}
+
+#sidebar {
+    width: 232px;
+
+    background-color: #2A3647;
+    left: 0;
+    position: fixed;
+}
+
+#bordbaner {
+    /* max-width: 80%; */
+    /* max-width: 1145px; */
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: #F6F7F8;
+    box-sizing: border-box;
+    padding-top: 80px;
+}
+
+#board {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 120%;
+    height: 73px;
+    width: 176px;
+
+}
+
+#content {
+    position: absolute;
+    left: 232px;
+    width: calc(100% - 232px);
+    display: flex;
+    flex-direction: column;
+}
+
+#lineHead {
+    height: 90px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    padding: 20px 36px 20px 116px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    justify-content: space-between;
+
+}
+
+#lineOne {
+    /* height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    padding-top: 82px;
+    padding-bottom: 99px;
+}
+
+#lineOnePartOne {
+    display: flex;
+    justify-content:
+        space-between;
+    width: 100%;
+}
+
+#lineTwo {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+
+}
+
+.taskTypeContainer {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    box-sizing: border-box;
+    min-height: 100px;
+
+}
+
+.taskType {
+    height: 30px;
+    display: flex;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 120%;
+    justify-content: space-between;
+    align-items: center;
+    color: #2A3647;
+    padding-left: 10px;
+
+}
+
+#inputDiv {
+    height: 51px;
+    padding: 13px 21px 13px 21px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: #A8A8A8;
+    width: 251px;
+    background-color: white;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+
+}
+
+#input {
+    border: none;
+    width: 100px;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#input::placeholder {
+    color: #D1D1D1;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+#loop {
+    border-left: solid 1px;
+    border-color: #D1D1D1;
+    padding-left: 15px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+#addTaskArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#buttonAdd {
+    padding: 18px;
+    background-color: #2A3647;
+    color: white;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 120%;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+#buttonAdd img {
+    margin-left: 3px;
+    height: 16px
+}
+
+.task {
+    background-color: white;
+    border-radius: 30px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 18px 19px 18px 19px;
+    box-sizing: border-box;
+    margin-top: 35px;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.category {
+    height: fit-content;
+    width: fit-content;
+    padding: 4px 25px 4px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+}
+
+.categoryDialog {
+    height: fit-content;
+    width: fit-content;
+    padding: 4px 37px 4px 37px;
+    border-radius: 8px;
+    font-size: 27px;
+    line-height: 120%;
+    color: white;
+}
+
+.cossDialog {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.buttonDialog {
+    position: absolute;
+    display: flex;
+    bottom: 61px;
+    right: 47px
+}
+
+.taskTitel {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 120%;
+    color: #2A3647;
+    margin-bottom: 10px;
+}
+
+.taskTitelDialog {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 120%;
+    color: #2A3647;
+    margin-top: 25px;
+}
+
+.taskText {
+    color: #A8A8A8;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.taskTextDialog {
+    color: black;
+    font-size: 21px;
+    line-height: 120%;
+    font-weight: 400;
+}
+
+.titleTaskDialog {
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.dateDialogNum {
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.categoryPrio {
+    height: fit-content;
+    width: fit-content;
+    padding: 3px 33px 3px 18px;
+    border-radius: 10px;
+    color: white;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    position: relative;
+
+}
+
+.categoryPrio img {
+    position: absolute;
+    width: 12px;
+    bottom: 10px;
+    right: 16px;
+
+}
+
+
+
+.bar {
+    background-color: #F4F4F4;
+    border-radius: 2px;
+    width: 200px;
+    height: 8px;
+
+}
+
+.barColor {
+    background-color: #29ABE2;
+    border-radius: 2px;
+    /* width: calc(138px /2); */
+    height: 8px;
+
+}
+
+.textBar {
+    font-size: 12px;
+    line-height: 120%;
+}
+
+.barArea {
+    height: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member {
+    width: 34px;
+    height: 34px;
+    border: solid 1px white;
+    border-radius: 17px;
+    color: white;
+    position: absolute;
+    top: 0;
+    font-size: 12px;
+    line-height: 120%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.memberDialog {
+    width: 46px;
+    height: 46px;
+    border: solid 1px white;
+    border-radius: 23px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.memberNameDialog {
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.memberArea {
+    height: 35px;
+    width: 100%;
+    position: relative;
+}
+
+.taskLastSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+#dialogBackground {
+    /* background-color: rgba(0, 0, 0, 0.10); */
+    z-index: 2;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+.dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* background-color: rgba(0, 0, 0, 0.10); */
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    overflow-x: hidden;
+
+}
+
+#askBannerDialog {
+    background-color: white;
+    max-width: 1145px;
+    border-radius: 15px;
+    left: 25%;
+    top: 30px;
+    transition: left 0.125s ease-in-out;
+    padding: 50px;
+    position: fixed;
+}
+
+
+
+.d-none {
+    display: none !important;
+}
+
+#menu_board {
+    background-color: #0a1931;
+}
+
+#menu_add-task {
+    background-color: #2A3647 !important;
+}
+
+.okButtonEdit {
+    color: white;
+    background-color: #2A3647;
+    font-size: 21px;
+    font-weight: 700;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 10px 5px 10px 5px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    right: 50px;
+    cursor: pointer;
+
+}
+
+.noTask {
+    background-color: #D1D1D1;
+    color: #A8A8A8;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.popUpAdded {
+    background-color: #2A3647;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    position: absolute;
+    left: 25%;
+    gap: 25px;
+    bottom: 0;
+    transition: bottom 0.125s ease-in-out;
+}
+
+.popUpAddedSmall {
+    background-color: #2A3647;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    position: absolute;
+
+    gap: 25px;
+    transition: top 0.125s ease-in-out;
+}
+
+#addContactEdit {
+    padding-left: 21px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top {
+    top: 500px;
+}
+
+.gap {
+    gap: 10px !important;
+}
+
+.taskdialog::-webkit-scrollbar {
+    width: 0.5em;
+    /* Breite des Scrollbalkens */
+    background-color: transparent;
+    /* Hintergrundfarbe des Scrollbalkens */
+}
+
+.taskdialog::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+    /* Farbe des Scrollbalken-Daumens */
+}
+
+.taskdialog {
+
+    width: 623px;
+    max-height: 90vh;
+    background-color: white;
+    border-radius: 30px;
+    position: absolute;
+    top: 50px;
+    left: 35%;
+    box-sizing: border-box;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 3;
+    padding-bottom: 140px;
+    position: fixed;
+    overflow-y: auto;
+
+}
+
+.infoSmallScreen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.taskdialogEdit {
+
+    min-height: 824px;
+    background-color: white;
+    /* border-radius: 30px; */
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+
+
+}
+
+#form {
+    position: relative;
+    z-index: 3;
+}
+
+
+
+
+@media(min-width:800px) {
+    #crossdialog {
+        display: none;
+    }
+
+    .taskDialogGrey {
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+    }
+
+    .taskdialogContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* background-color: rgba(0, 0, 0, 0.2); */
+        z-index: 2;
+        position: fixed;
+    }
+
+    .askBannerDialogContainer {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 2;
+
+    }
+}
+
+@media(max-width:940px) {
+    .taskdialog {
+        left: 125px;
+    }
+}
+
+@media(max-width:800px) {
+
+#board{
+    font-size: 47px;
+}
+
+    #inputSub {
+        font-size: 16px;
+    }
+
+    .taskdialog {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #dialogBackground {
+        background-color: white;
+    }
+
+    .memberDialog {
+        width: 35px;
+        height: 35px;
+    }
+
+    .memberNameDialog {
+        font-size: 16px;
+    }
+
+    .cossDialog {
+        top: 70px;
+        right: 15px;
+    }
+
+    #dialogTask {
+        z-index: 0;
+        min-height: 100vh;
+    }
+
+    #taskdialog {
+        position: relative;
+        padding-top: 70px;
+        /* margin-left: 2.5%; */
+        width: 100%;
+        left: 0;
+        padding-left: 20px;
+    }
+
+    #addTaskArea {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: unset;
+        align-items: unset;
+
+    }
+
+    #buttonAdd {
+        margin-left: 0;
+    }
+
+    #lineTwo {
+        justify-content: center;
+    }
+
+    #addPlus {
+        background-color: #2A3647;
+    }
+
+    #bottom {
+        height: 91px;
+        width: 20px
+    }
+
+    /* #portrait {
+        height: 38px;
+        border-radius: 19px;
+    } */
+
+    #kanban {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        margin-top: 35px;
+    }
+
+
+    #content {
+        left: 0;
+        width: 100%;
+    }
+
+    #lineOne {
+        padding-top: 19px;
+        padding-bottom: 30px;
+    }
+
+
+    #bordbaner {
+        padding: 80px 33px 80px 33px;
+    }
+
+
+
+    .taskTitelDialog {
+        font-size: 40px;
+    }
+
+    #dialog {
+        z-index: 0;
+        background-color: white;
+    }
+
+    #askBannerDialog {
+        width: 100%;
+        left: 0;
+        padding: 70px 0 0 0;
+        position: relative;
+
+    }
+
+    .popUpAdded {
+        left: 10% !important;
+    }
+
+    #formEdit {
+        width: 100%;
+        left: 0;
+        top: 60px;
+    }
+}
+
+@media(min-width:681px) {
+
+
+    #kanban {
+        display: none;
+    }
+}
+
+@media(max-width:560px) {
+    #lineTwo {
+        justify-content: unset !important;
+    }
+}
+
+
+
+@media (min-width:670px) and (max-width:900px) {
+    .dialog {
+        height: 150vh !important;
+    }
+}
+
+@media(max-width:670px) {
+    #askBannerDialog {
+        left: 10px !important;
+    }
+
+}
+
+
+@media (min-width:800px) and (max-width:930px) {
+    #taskdialog {
+        left: 50px;
+    }
+}
+
+@media (min-width:568px) and (max-width:669px) {
+    .dialog {
+        height: 125vh !important;
+    }
+}
+
+@media(max-width:567px) {
+    /* .dialog {
+        height: 260vh;
+    } */
+}
+
+@media(max-width:400px) {
+    /* #taskbaner {
+        height: 170vh !important;
+    } */
+}
+
+@media(max-width:330px) {
+    #inputDiv {
+        height: 41px;
+    }
+
+    #lineOne {
+        flex-direction: column;
+
+    }
+
+    #loop {
+        height: fit-content;
+    }
+
+}
+
+@media(min-width:600px) {
+    .pos {
+        left: 600px !important;
+    }
+}
+
+@media(max-width:900px) {
+
+
+    #buttonAdd {
+        display: none;
+    }
+
+    #lineOnePartOne {
+        flex-direction: column;
+        gap: 30px;
+        width: 80%;
+    }
+
+    #addPlus {
+        width: 40px;
+        height: 40px;
+        background-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        margin-top: 30px;
+
+        cursor: pointer;
+    }
+
+    #lineOne {
+        display: flex;
+
+    }
+}
+
+@media(max-width:500px) {
+    #buttonContainer {
+        right: unset !important;
+        ;
+    }
+
+    #taskbaner {
+        max-width: 90% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #askBannerDialog {
+        max-width: 95% !important;
+    }
+}
+
+@media(min-width:800px) {
+    .dialog {
+        height: 150vh;
+    }
+
+    .moveStateArrows{
+        display: none;
+    }
+
+}
+
+@media (min-width: 801px) and (max-width: 1200px) {
+    #askBannerDialog {
+        width: 50%;
+        position: relative;
+        padding: 70px 70px 70px 70px;
+        left: 25%;
+    }
+}
+
+
+
+/* .bordbackground :hover{
+   
+    transform: skewX(10deg);
+} */

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-Task-banner</title>
+    <script src="../scripts/generalFunctions.js"></script>
+    <script src="../scripts/addtaksRenderinghelpers.js"></script>
+    <script src="../scripts/addTask.js"> </script>
+    <script src="../scripts/createTask.js"></script>
+
+</head>
+
+<body>
+
+
+    <div id="addTask">Add Task</div>
+    <div id="addTaskTable">
+
+        <div id="leftColumn">
+            <div>
+                <p class="titles">Title</p>
+                <input id="title" type="text" class="input" required placeholder="Enter a title">
+            </div>
+            <div>
+                <p class="titles">Description</p>
+                <textarea placeholder="Description of the task" required id="discription"
+                    class="discription"></textarea>
+            </div>
+            <div>
+                <p class="titles">Category</p>
+                <!-- <div class="selectionContainer">
+                    <select name="categorys" id="categorys" class="selection" required style="padding-left: 21px;">
+                        <option value="Design" class="o1" style="background-image:url(../img/caret-down-solid.svg);">Design</option>
+                        <option value="Sales" class="o2">Sales</option>
+                        <option value="Backoffice" class="o3">Backoffice</option>
+                        <option value="Media" class="o4">Media</option>
+                        <option value="Marketing" class="o5">Marketing</option>
+                    </select>
+                    
+                </div>             -->
+                <div class="selection" id="selectionCategory" onclick="showCategoryPrevent(event)">
+                    <div style="position: relative;display:flex">
+                        <span style="align-items: center;display:flex; padding-left:21px"  id="categoryPlaceholder">Select task category</span>
+                
+                    </div>
+                </div>
+
+                <div id="colorChoice" class="d-none" style="margin-top:10px; display:flex; gap:10px;">
+                    <div id="c1" class="circle" style="background-color:#FF7A00 ; cursor:pointer;"
+                        onclick="chooseColor(event,'#FF7A00',1)"></div>
+                    <div id="c2" class="circle" style="background-color:#FC71FF ; cursor:pointer;"
+                        onclick="chooseColor(event,'#FC71FF',2)"></div>
+                    <div id="c3" class="circle" style="background-color:#1FD7C1 ; cursor:pointer;"
+                        onclick="chooseColor(event,'#1FD7C1',3)"></div>
+                    <div id="c4" class="circle" style="background-color:#FFC701 ; cursor:pointer;"
+                        onclick="chooseColor(event,'#FFC701',4)"></div>
+                    <div id="c5" class="circle" style="background-color:#0038FF ; cursor:pointer;"
+                        onclick="chooseColor(event,'#0038FF ',5)"></div>
+                    <div id="c6" class="circle" style="background-color:#068f43 ; cursor:pointer;"
+                        onclick="chooseColor(event,'#068f43',6)"></div>
+
+                </div>
+            </div>
+            <div>
+                <p class="titles">Assigned to</p>
+                <div class="selection" id="selectionContainer" onclick="stoppen(event)">
+                    <div style="position: relative;" onclick="showCheckboxes()">
+                        <div style="padding-left: 21px;">
+                            Select contacts to assign
+                        </div>
+                        <div class="iconContainer" style="top:0;">
+                            <img src="../img/caret-down-solid.svg">
+                        </div>
+                    </div>
+                    <div id="assignmentChoices" class="d-none">
+
+
+                        <div class="selectGapArrow noPointer" onclick="stoppen(event)"
+                            style="bottom:10px; ">
+                            <div>Invite new member</div>
+                            <img src="../img/mailIcon.png" onclick="changeSelect('')"
+                                style="height:30px;width: auto;cursor:pointer">
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="selection  d-none" id="addContact">
+                    <input placeholder="Contact email" id="mailContact" class="mailContact">
+                    <div style="margin-right: 5px;">
+                        <img src="../img/cross.svg" onclick="changeSelect('')">
+                        <img src="../img/checkWhiteBackground.svg"
+                            style="width:25px; border-left: solid grey 1px; padding-left: 3px;"
+                            onclick="addAssignment('')">
+                    </div>
+                </div>
+                <div id="assignedIcon" style="padding-top: 10px; display: flex; gap:5px"></div>
+
+            </div>
+
+        </div>
+        <div id="rightColumn">
+            <div>
+                <p class="titles">Due date</p>
+                <div id="inputDate" class="inputWithImage"><input type="date" required class="inputImg" id="date"
+                        placeholder="dd/mm/yyyy">
+                    <!-- <img src="../img/calendar.svg"> -->
+                </div>
+            </div>
+            <div>
+                <p class="titles">Prio</p>
+                <div id="prio" class="prioContainer">
+                    <div class="prio" id="prio0" onclick="selectPrio(0,'prio')">Urgent <img id="prioAdd0"
+                            src="../img/higPrio.png"></div>
+                    <div class="prio" id="prio1" onclick="selectPrio(1,'prio')" style="margin: 0 5px 0 5px;">Medium <img
+                            id="prioAdd1" src="../img/equal.svg"></div>
+                    <div class="prio" id="prio2" onclick="selectPrio(2,'prio')">Low <img id="prioAdd2"
+                            src="../img/arrow.svg"></div>
+
+                </div>
+            </div>
+            <div>
+                <p class="titles">Subtask</p>
+                <div class="inputWithImage"><input class="inputImg" id="subtask" placeholder="Add new subtask"><img
+                        src="../img/plusBlacknoBorder.svg" onclick="addSubtask()" style="cursor: pointer;"></div>
+                <div style="min-height: 100px; position: relative;">
+                    <div id="subtasksArea">
+
+                    </div>
+
+                    <div id="buttonContainer">
+                        <button class="taskButton" type="button" id="clear" onclick="returnFromAddTask(false)">Clear<img
+                                src="../img/cross.svg"></button>
+                        <button class="taskButton" id="create">Create task<img src="../img/checkOne.svg"> </button>
+                    </div>
+                </div>
+            </div>
+            <div id="bottom"></div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

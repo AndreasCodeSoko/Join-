@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add task</title>
+    <link rel="icon" href="../img/Join-Logo.svg">
+    <link rel="apple-touch-icon" sizes="20x20" href="../img/mobilLogo.ico">
+    <link rel="stylesheet" href="../css/add-task.css">
+    <link rel="stylesheet" href="../css/add-task-display">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/interFont.css">
+    <script src="../scripts/generalFunctions.js"></script>
+    <script src="../scripts/addtaksRenderinghelpers.js"></script>
+    <script src="../scripts/addTask.js"></script>
+    <script src="../scripts/createTask.js"></script>
+
+
+
+
+</head>
+
+<body onload="init()">
+    <div id="displayBoard">
+
+        <div id="sidebar">
+            <div w3-include-html="./sidebar.html"></div>
+        </div>
+
+        <div id="content">
+
+            <form id="form" onsubmit="createTask();return false;">
+                <div id="line" w3-include-html="./header.html"></div>
+                <!-- <div id="lineHead"><img id="logo" src="../img/jLogo.svg">
+                     <span id="lineHeadText">Kanban Project
+                        Management
+                        Tool</span>
+                    <button class="taskButton" id="create1">Create<img src="../img/checkOne.svg">
+                    </button>
+                    <img class="portrait" id="portrait1" src="../img/portrait.svg"> 
+                     <div class="dropdown1" id="dropdown" onclick="toggleDropdown()">
+                        <img id="portrait" class="portrait" src="../img/portrait.svg">
+                        <div class="dropdown-content">
+                            <a href="../index.html"><strong>Log out</strong></a>
+                        </div>
+                    </div> 
+                 </div> --> 
+                <div id="banner" onclick=closeAllSelections(event)>
+                    <div w3-include-html="./addTaskbanner.html">
+                    </div>
+
+                </div>
+
+            </form>
+            <div id="popUpAddedContainer" class="popUpAddContainer d-none">
+                <div id="popUpAdded" class="popUp d-none">
+                    <div>Task added to board</div>
+                    <img src="../img/addedToBoard.svg">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("open");
+    }
+
+    //'form' is the id of the form-Element
+    let form = document.getElementById('form');
+    // Adds a listener for the "submit" event.
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+    })
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("open");
+    }
+</script>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="icon" href="../img/Join-Logo.svg">
+    <link rel="apple-touch-icon" sizes="20x20" href="../img/mobilLogo.ico">
+    <link rel="stylesheet" href="../css/boards.css">
+    <link rel="stylesheet" href="../css/interFont.css">
+    <link rel="stylesheet" href="../css/add-task.css">
+    <link rel="stylesheet" href="../css/header.css">
+     <script src="../scripts/boardRenderingHelpers.js"></script>
+    <script src="../scripts/board.js"></script>
+    <script src="../scripts/boardHelpers.js"></script>
+    <script src="../scripts/editTask.js"></script>
+    <script src="../scripts/generalFunctions.js"></script>
+    <script src="../scripts/addtaksRenderinghelpers.js"></script>
+    <script src="../scripts/addTask.js"></script>
+    <script src="../scripts/createTask.js"></script>
+    
+
+</head>
+
+<body onload="initBoard()">
+    <div id="displayBoard">
+        <div id="sidebar">
+            <div w3-include-html="./sidebar.html"></div>
+        </div>
+        <div id="content">
+            <div id="line" w3-include-html="./header.html"></div>
+            <div id="bordbaner">
+                <div id="kanban">Kanban Project Management Tool</div>
+                <div id="lineOne">
+                    <div id="lineOnePartOne">
+                        <div id="board">Board</div>
+                        <div id="addTaskArea">
+                            <div id="inputDiv">
+                                <input id="input" placeholder="Find Task">
+                                <img id="loop" src="../img/lupe.png" onclick="clickLoop()">
+                            </div>
+                            <div id="buttonAdd" onclick="openAddTask(0)">Add task
+                                <img src="../img/plus.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="addPlus" onclick="openAddTask(0)"><img src="../img/plus.svg"></div>
+                </div>
+                <div id="lineTwo">
+                    <div class="taskTypeContainer" ondrop="moveTo(0)" ondragover="allowDrop(event)">
+                        <div class="taskType">
+                            <div>To do</div>
+                            <img style="cursor: pointer;" onclick="openAddTask(0)" src="../img/plusBlack.svg">
+                        </div>
+                        <div id="taskArea0" style="margin-bottom:150px;" >
+                       
+                        </div>
+                    </div>
+                    <div class="taskTypeContainer" ondrop="moveTo(1)" ondragover="allowDrop(event)">
+                        <div class="taskType">
+                            <div>In progress</div>
+                            <img style="cursor: pointer;" onclick="openAddTask(1)" src="../img/plusBlack.svg">
+                        </div>
+                        <div id="taskArea1" style="margin-bottom:150px;" >
+                        </div>
+                    </div>
+                    <div class="taskTypeContainer" ondrop="moveTo(2)" ondragover="allowDrop(event)">
+                        <div class="taskType">
+                            <div>Awaiting Feedback</div>
+                            <img style="cursor: pointer;" onclick="openAddTask(2)" src="../img/plusBlack.svg">
+                        </div>
+                        <div id="taskArea2" style="margin-bottom:150px;" >
+                        </div>
+                    </div>
+                    <div class="taskTypeContainer" ondrop="moveTo(3)" ondragover="allowDrop(event)">
+                        <div class="taskType">
+                            <div>Done</div>
+                            <img style="cursor: pointer;" onclick="openAddTask(3)" src="../img/plusBlack.svg">
+                        </div>
+                        <div id="taskArea3" style="margin-bottom:150px;" >
+
+                        </div>
+                        <div id="bottom">
+                            <!-- <a  href="add-task.html">Klicken</a> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="dialog" class="dialog d-none" onclick="closeAllSelections(event)">
+        <div id="dialogBackground"> <div class="askBannerDialogContainer" onclick="returnFromAddTask(false)"></div>
+        <form id="form" onsubmit="createTask();return false;">
+           
+            <div id="askBannerDialog" class="pos"  >
+                <div w3-include-html="./addTaskbanner.html" >                    
+                </div></div>
+                <div id="popUpAddedContainer" style="position: fixed; top:0; width:100%; height:100vh;" class="d-none">
+                    <div id="popUpAdded" class="popUpAdded  d-none" >
+                        <div>Task addet to board</div>
+                        <img src="../img/addedToBoard.svg">
+                    </div>                    
+                </div>               
+               
+            </div>
+           
+        </form>
+        <img id="crossdialog" src="../img/cross.svg" style="position:absolute;right: 15px; top: 120px; cursor:pointer;z-index:3" onclick="crossAddTask()">
+    </div>
+    <div id="dialogTask" class="dialog d-none  ">
+
+        <div class="taskdialogContainer">
+        <div class="taskDialogGrey" onclick="closeTask()"></div>
+        <div id="taskdialog"  class=" taskdialog d-none"  >                   
+
+        </div> </div>
+        <div id="taskEdit"  onclick="unshowCheckboxesEdit()" class=" d-none"  style="position: relative;">                   
+            <form id="formEdit" class="taskdialog gap" onsubmit="editTask('formEdit');return false;">
+                <img id="crossDialog" src="../img/cross.svg" style="position:absolute;right: 50px;
+                 top: 40px; cursor:pointer" onclick="backToBoardFromedit()">
+                <p class="titles">Title</p>
+                <input id="titleEdit" type="text" class="input" value="" required placeholder="Enter a title">
+                <p class="titles">Discription</p>
+                <textarea required id="discriptionEdit" class="discription"></textarea>
+                <p class="titles">Due date</p>
+                <div id="inputDateEdit" class="inputWithImage"><input type="date" required class="inputImg" id="dateEdit"
+                        placeholder="dd/mm/yyyy" value="" >
+                </div>
+                <p class="titles">Prio</p>
+                <div id="prioEdit" class="prioContainer">
+                    <div class="prio" id="prioEdit0" onclick="selectPrio(0,'prioEdit')" >Urgent <img id="prioE0" src="../img/arrowUp.png"></div>
+                    <div class="prio" id="prioEdit1" onclick="selectPrio(1,'prioEdit')">Medium <img id="prioE1" src="../img/equal.svg"></div>
+                    <div class="prio" id="prioEdit2" onclick="selectPrio(2,'prioEdit')">Low <img id="prioE2" src="../img/arrow.svg"></div>
+            
+                </div>
+
+                <p class="titles">Subtask</p>
+                <div class="selection" id="subtaskContainerEdit" onclick="stoppen(event)">
+                    <div style="position: relative;"onclick="openSubtasks()" >
+                        <div style="padding-left: 21px;"  >
+                            Select Subtasks
+                        </div>
+                        <div class="iconContainer" style="top:0;">
+                            <img src="../img/caret-down-solid.svg">
+                        </div>
+                    </div>
+                    <div id="subtasksEdit" class="d-none">                  
+                                            
+                    </div>
+            
+                </div>
+
+                
+                <p class="titles">Assigned to</p>
+                <div class="selection" id="selectionContainerEdit" onclick="stoppen(event)">
+                    <div style="position: relative;"onclick="showCheckboxesEdit(0)" >
+                        <div style="padding-left: 21px;"  >
+                            Select contacts to assign
+                        </div>
+                        <div class="iconContainer" style="top:0;">
+                            <img src="../img/caret-down-solid.svg">
+                        </div>
+                    </div>
+                    <div id="assignmentChoicesEdit" class="d-none">                  
+                                            
+                    </div>
+            
+                </div>
+                <div class="selection  d-none" id="addContactEdit">
+                                <input placeholder="Contact email" id="mailContactEdit" class="mailContact" >
+                                <div style="margin-right:5px;">
+                                    <img  src="../img/cross.svg" onclick="changeSelect('Edit')">
+                                    <img  src="../img/checkWhiteBackground.svg" style="width:25px; border-left: solid grey 1px; padding-left: 3px;" onclick="addAssignment('Edit')">
+                                </div>
+                </div>
+                <div class="memberDialogSection" id="memberDialogSectionEdit" style="display:flex;gap:10px;flex-direction:column;">
+                </div>
+                 <div id="bContainer">
+                    <Button class="okButtonEdit" id="okButtonEdit" type="submit" onclick="stoppen(event)">OK   <img src="../img/checkEdit.svg"> </Button> 
+                  </div>
+              </form>
+        </div>
+</body>
+<script>
+    //'form' is the id of the form-Element
+    let form = document.getElementById('formEdit');
+    // Adds a listener for the "submit" event.
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+    })
+    function toggleDropdown() {
+                const dropdown = document.getElementById("dropdown");
+                dropdown.classList.toggle("open");
+            }
+</script>
+
+</html>
